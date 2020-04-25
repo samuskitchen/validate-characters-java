@@ -47,15 +47,18 @@ public class CentralCommand {
         }};
 
         if (types.length > 0) {
-            for (int i = 0; i < types.length; i++) {
-                if (mapInitial.containsValue(types[i])) {
+            for (String type : types) {
+                if (mapInitial.containsValue(type)) {
                     logger.info("validate initial");
-                    logger.info("value initial : {}", types[i]);
-                    open.add(types[i]);
-                } else if (mapClosing.containsValue(types[i])) {
-                    logger.info("value closing : {}", types[i]);
-                    if (!open.isEmpty() && validateType(types[i], open)) {
+                    logger.info("value initial : {}", type);
+
+                    open.add(type);
+                } else if (mapClosing.containsValue(type)) {
+                    logger.info("value closing : {}", type);
+
+                    if (!open.isEmpty() && validateType(type, open)) {
                         logger.info("delete initial in list");
+                        
                         open.remove(open.size() - 1);
                     } else {
                         logger.error("different types");
