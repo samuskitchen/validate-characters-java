@@ -2,6 +2,8 @@ package co.com;
 
 import co.com.commands.CentralCommand;
 import co.com.domain.TypeException;
+import co.com.domain.TypeNotContainException;
+import co.com.domain.TypeNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -25,9 +27,28 @@ class DemoApplicationTests {
 	}
 
 	@Test
-	void contextLoadsInvalidTest() {
+	void contextLoadsTypeNotContainTest() {
+		TypeNotContainException exception = assertThrows(TypeNotContainException.class, () -> {
+			centralCommand.executeMain("");
+		});
+
+		assertNotNull(exception);
+	}
+
+
+	@Test
+	void contextLoadsTypeInvalidTest() {
 		TypeException exception = assertThrows(TypeException.class, () -> {
 			centralCommand.executeMain("[({}[)]");
+		});
+
+		assertNotNull(exception);
+	}
+
+	@Test
+	void contextLoadsTypeNotFoundTest() {
+		TypeNotFoundException exception = assertThrows(TypeNotFoundException.class, () -> {
+			centralCommand.executeMain("[");
 		});
 
 		assertNotNull(exception);

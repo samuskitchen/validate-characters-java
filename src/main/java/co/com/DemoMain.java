@@ -1,6 +1,5 @@
 package co.com;
 
-
 import co.com.commands.CentralCommand;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

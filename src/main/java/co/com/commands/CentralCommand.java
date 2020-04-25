@@ -1,10 +1,11 @@
 package co.com.commands;
 
+import co.com.domain.TypeException;
+import co.com.domain.TypeNotContainException;
+import co.com.domain.TypeNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import co.com.domain.TypeException;
-import co.com.domain.TypeNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +25,11 @@ public class CentralCommand {
 
     public void executeMain(String variable) {
         logger.info("Init Execution");
+
+        if(variable.isEmpty()){
+            logger.error("No types found");
+            throw new TypeNotContainException("No types found");
+        }
 
         String[] types = variable.split("");
         List<String> open = new ArrayList<>();
@@ -62,7 +68,9 @@ public class CentralCommand {
                 logger.error("No more types found");
                 throw new TypeNotFoundException("No more types found");
             }
-
+        }else{
+            logger.error("No types found");
+            throw new TypeNotContainException("No types found");
         }
     }
 
