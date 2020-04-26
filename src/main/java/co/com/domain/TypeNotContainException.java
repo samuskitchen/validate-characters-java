@@ -6,7 +6,4 @@ public class TypeNotContainException extends RuntimeException {
         super(message);
     }
 
-    public TypeNotContainException(String message, Throwable cause) {
-        super(message, cause);
-    }
 }
