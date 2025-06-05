@@ -35,7 +35,6 @@ class DemoApplicationTests {
 		assertNotNull(exception);
 	}
 
-
 	@Test
 	void contextLoadsTypeInvalidTest() {
 		TypeException exception = assertThrows(TypeException.class, () -> {
@@ -53,4 +52,5 @@ class DemoApplicationTests {
 
 		assertNotNull(exception);
 	}
+
 }
